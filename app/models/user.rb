@@ -46,30 +46,30 @@ class User < ApplicationRecord
     )
   end
 
-  # def generate_invitation_token
-  #   self.invitation_expiration = DateTime.current + 7.day
-  #   loop do
-  #     # Once we have a random, test whether it is unique in the DB
-  #     self.invitation_token = SecureRandom.alphanumeric(15)
-  #     break unless self.class.exists?(invitation_token: invitation_token)
-  #   end
-  # end
+  def generate_invitation_token
+    self.invitation_expiration = DateTime.current + 7.day
+    loop do
+      # Once we have a random, test whether it is unique in the DB
+      self.invitation_token = SecureRandom.alphanumeric(15)
+      break unless self.class.exists?(invitation_token: invitation_token)
+    end
+  end
 
-  # def invitation_accepted_at!
-  #   update(invitation_accepted: true, invitation_token: nil, invitation_expiration: nil)
-  # end
+  def invitation_accepted_at!
+    update(invitation_accepted: true, invitation_token: nil, invitation_expiration: nil)
+  end
 
-  # def invitation_link
-  #   throw 'Environment Variable Not Found Error' if Rails.application.credentials.invitation[:url].nil?
+  def invitation_link
+    throw 'Environment Variable Not Found Error' if Rails.application.credentials.invitation[:url].nil?
 
-  #   url = Rails.application.credentials.invitation[:url]
-  #   "#{url}#{invitation_token}"
-  # end
+    url = Rails.application.credentials.invitation[:url]
+    "#{url}#{invitation_token}"
+  end
 
-  # def invite_user
-  #   # Email the user a link with the invitation_token
-  #   InvitationWorker.perform_async(id)
-  # end
+  def invite_user
+    # Email the user a link with the invitation_token
+    InvitationWorker.perform_async(id)
+  end
 
   def name
     "#{first_name} #{last_name}"

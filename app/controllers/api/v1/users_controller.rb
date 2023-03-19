@@ -4,7 +4,7 @@ module Api
   module V1
     # Handles endpoints related to users
     class UsersController < Api::V1::ApplicationController
-      skip_before_action :authenticate, only: %i[login create]
+      skip_before_action :authenticate, only: [:create, :login]
 
       def login
         result = BaseApi::Auth.login(params[:email], params[:password], @ip)
@@ -15,7 +15,7 @@ module Api
           token: TokenBlueprint.render_as_hash(result.payload[:token]),
           status: 200
         }
-        render_success(payload: payload)
+        render_success(payload: payload, status: 200)
       end
 
       def logout
@@ -26,12 +26,23 @@ module Api
       end
 
       def create
+        # user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], phone: params[:phone], password: params[:password])
+        # if user.save 
+        #   render json: {success: true, user: user, status: 201}
+        # else
+        #   render json: {errors: "There was a problem creating a new user", status: 400}
+        # end
+        
+        # STEP 1: get the result from the service 
         result = BaseApi::Users.new_user(params)
+        # Step 2: return an error if the results was unsuccessful
         render_error(errors: 'There was a problem creating a new user', status: 400) and return unless result.success?
+        # Step 3: otherwise, build a payload
         payload = {
           user: UserBlueprint.render_as_hash(result.payload, view: :normal)
         }
         #  TODO: Invite user to accept invitation via registered email
+        # Step 4: return a successful response attached with the payload
         render_success(payload: payload, status: 201)
       end
 
