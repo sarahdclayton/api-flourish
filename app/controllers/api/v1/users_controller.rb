@@ -7,14 +7,20 @@ module Api
       skip_before_action :authenticate, only: [:create, :login]
 
       def login
+        # STEP 1: get results
         result = BaseApi::Auth.login(params[:email], params[:password], @ip)
+
+        # STEP 2: return error response if result was unsuccessful
         render_error(errors: 'User not authenticated', status: 401) and return unless result.success?
 
+        # STEP 3: if results was successful
+        # define a payload
         payload = {
           user: UserBlueprint.render_as_hash(result.payload[:user], view: :login),
           token: TokenBlueprint.render_as_hash(result.payload[:token]),
           status: 200
         }
+        # STEP 4: return successful response
         render_success(payload: payload, status: 200)
       end
 
@@ -41,7 +47,6 @@ module Api
         payload = {
           user: UserBlueprint.render_as_hash(result.payload, view: :normal)
         }
-        #  TODO: Invite user to accept invitation via registered email
         # Step 4: return a successful response attached with the payload
         render_success(payload: payload, status: 201)
       end

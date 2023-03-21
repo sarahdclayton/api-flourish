@@ -19,22 +19,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": {
-                    "id": 33218,
-                    "email": "carmelo@olson-bailey.info",
-                    "first_name": "Tabitha",
-                    "last_name": "Hartmann",
-                    "name": "Tabitha Hartmann",
-                    "token": {
-                      "id": 36599,
-                      "created_at": "2023-01-27T19:34:48.320Z",
-                      "expiry": "2023-02-03T19:34:48.319Z",
-                      "ip": null,
-                      "revocation_date": null,
-                      "updated_at": "2023-01-27T19:34:48.320Z",
-                      "user_id": 33218,
-                      "value": "1Nkh2yGziXLmRUcBHcp6hmEwhQJ5p5tyk2"
-                    }
+                  "example": {
+                    "success": true,
+                    "payload": {
+                      "id": 34426,
+                      "email": "sharron@spinka-gusikowski.io",
+                      "first_name": "Kasey",
+                      "last_name": "Reinger",
+                      "name": "Kasey Reinger",
+                      "token": {
+                        "id": 88449,
+                        "created_at": "2023-03-21 00:10:47 UTC",
+                        "expiry": "2023-03-28 00:10:47 UTC",
+                        "ip": null,
+                        "revocation_date": null,
+                        "updated_at": "2023-03-21 00:10:47 UTC",
+                        "user_id": 34426,
+                        "value": "1Kw1MjU1PysxfL3P99FvmmJ19rS8cB3E6s"
+                      }
+                    },
+                    "status": 200
                   }
                 }
               }
@@ -116,11 +120,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "id": 33218,
-                  "email": "carmelo@olson-bailey.info",
-                  "first_name": "Tabitha",
-                  "last_name": "Hartmann",
-                  "name": "Tabitha Hartmann"
+                  "example": {
+                    "payload": {
+                      "id": 34426,
+                      "email": "sharron@spinka-gusikowski.io",
+                      "first_name": "Kasey",
+                      "last_name": "Reinger",
+                      "name": "Kasey Reinger"
+                    },
+                    "status": 200
+                  }
                 }
               }
             }
@@ -152,12 +161,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "id": 33218,
-                  "email": "carmelo@olson-bailey.info",
-                  "first_name": "Tabitha",
-                  "last_name": "Hartmann",
-                  "name": "Tabitha Hartmann",
-                  "phone": "1615946227"
+                  "example": {
+                    "success": true,
+                    "payload": {
+                      "id": 34426,
+                      "email": "sharron@spinka-gusikowski.io",
+                      "first_name": "Kasey",
+                      "last_name": "Reinger",
+                      "name": "Kasey Reinger",
+                      "phone": "4942624514"
+                    },
+                    "status": 201
+                  }
                 }
               }
             }
@@ -252,38 +267,38 @@
                 "properties": {
                   "id": {
                     "type": "integer",
-                    "example": 35103
+                    "example": 39202
                   },
                   "email": {
                     "type": "string",
-                    "example": "carolyn.hansen@gutkowski.net"
+                    "example": "grace@willms.io"
                   },
                   "first_name": {
                     "type": "string",
-                    "example": "Andre"
+                    "example": "Leif"
                   },
                   "last_name": {
                     "type": "string",
-                    "example": "Shanahan"
+                    "example": "Runte"
                   },
                   "name": {
                     "type": "string",
-                    "example": "Andre Shanahan"
+                    "example": "Leif Runte"
                   },
                   "token": {
                     "type": "object",
                     "properties": {
                       "id": {
                         "type": "integer",
-                        "example": 80334
+                        "example": 23390
                       },
                       "created_at": {
                         "type": "string",
-                        "example": "2023-01-27 19:34:48 UTC"
+                        "example": "2023-03-21 00:10:47 UTC"
                       },
                       "expiry": {
                         "type": "string",
-                        "example": "2023-02-03 19:34:48 UTC"
+                        "example": "2023-03-28 00:10:47 UTC"
                       },
                       "ip": {
                         "type": "any",
@@ -295,15 +310,15 @@
                       },
                       "updated_at": {
                         "type": "string",
-                        "example": "2023-01-27 19:34:48 UTC"
+                        "example": "2023-03-21 00:10:47 UTC"
                       },
                       "user_id": {
                         "type": "integer",
-                        "example": 35103
+                        "example": 39202
                       },
                       "value": {
                         "type": "string",
-                        "example": "18271aBYLjZ8uCWuuRktL3ZJvhAWx1tiyM"
+                        "example": "18XqXnZ9BEr6ZqsY2FfQkECbxewuzDVrpC"
                       }
                     }
                   }
@@ -316,15 +331,15 @@
             "properties": {
               "id": {
                 "type": "integer",
-                "example": 80334
+                "example": 23390
               },
               "created_at": {
                 "type": "string",
-                "example": "2023-01-27 19:34:48 UTC"
+                "example": "2023-03-21 00:10:47 UTC"
               },
               "expiry": {
                 "type": "string",
-                "example": "2023-02-03 19:34:48 UTC"
+                "example": "2023-03-28 00:10:47 UTC"
               },
               "ip": {
                 "type": "any",
@@ -336,15 +351,15 @@
               },
               "updated_at": {
                 "type": "string",
-                "example": "2023-01-27 19:34:48 UTC"
+                "example": "2023-03-21 00:10:47 UTC"
               },
               "user_id": {
                 "type": "integer",
-                "example": 35103
+                "example": 39202
               },
               "value": {
                 "type": "string",
-                "example": "18271aBYLjZ8uCWuuRktL3ZJvhAWx1tiyM"
+                "example": "18XqXnZ9BEr6ZqsY2FfQkECbxewuzDVrpC"
               }
             }
           },
@@ -428,23 +443,23 @@
             "properties": {
               "id": {
                 "type": "integer",
-                "example": 35103
+                "example": 39202
               },
               "email": {
                 "type": "string",
-                "example": "carolyn.hansen@gutkowski.net"
+                "example": "grace@willms.io"
               },
               "first_name": {
                 "type": "string",
-                "example": "Andre"
+                "example": "Leif"
               },
               "last_name": {
                 "type": "string",
-                "example": "Shanahan"
+                "example": "Runte"
               },
               "name": {
                 "type": "string",
-                "example": "Andre Shanahan"
+                "example": "Leif Runte"
               }
             }
           }
@@ -462,27 +477,27 @@
             "properties": {
               "id": {
                 "type": "integer",
-                "example": 35103
+                "example": 39202
               },
               "email": {
                 "type": "string",
-                "example": "carolyn.hansen@gutkowski.net"
+                "example": "grace@willms.io"
               },
               "first_name": {
                 "type": "string",
-                "example": "Andre"
+                "example": "Leif"
               },
               "last_name": {
                 "type": "string",
-                "example": "Shanahan"
+                "example": "Runte"
               },
               "name": {
                 "type": "string",
-                "example": "Andre Shanahan"
+                "example": "Leif Runte"
               },
               "phone": {
                 "type": "string",
-                "example": "5035085086"
+                "example": "1624603830"
               }
             }
           }
