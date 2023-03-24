@@ -15,6 +15,20 @@ module Api
                 # STEP 4: return successful response 
                 render_success(payload: payload)
             end
+
+            def destroy
+                @blog = Blog.find(params[:id])
+                @blog.destroy
+
+                # respond_to do |blog|
+                #     blog.html
+                #     blog.json { render json: @blogs }
+                end
+            end
+
+            def update
+
+            end
         end
     end
 end
