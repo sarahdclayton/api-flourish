@@ -28,7 +28,17 @@ Rails.application.routes.draw do
         get :me
         post :create
       end
-      resources :blogs 
+      resources :blogs, only:[:show, :update]
+
+      # namespace :blogs do
+      #   # GET all blogs
+      #   get :blogs
+      #   # GET a specific blog
+      #   get 'blogs/:id', to: 'blogs#show'
+      #   # upgate a blog
+      #   put 'blogs/:id', to: 'blogs#update'
+
+      end
     end
   end
 end
