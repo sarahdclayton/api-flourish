@@ -18,26 +18,14 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :blogs, only:[:index, :show, :create, :update, :destroy]
       namespace :users do
-        # post "users/login" to: "users#login"
         post :login
         delete :logout
         get :me
         post :create
-      end
-      resources :blogs, only:[:show, :update]
-
-      # namespace :blogs do
-      #   # GET all blogs
-      #   get :blogs
-      #   # GET a specific blog
-      #   get 'blogs/:id', to: 'blogs#show'
-      #   # upgate a blog
-      #   put 'blogs/:id', to: 'blogs#update'
-
       end
     end
   end

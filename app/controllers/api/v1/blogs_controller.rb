@@ -30,21 +30,26 @@ module Api
             def destroy
                 blog = Blog.find(params[:id])
                 blog.destroy
-                # render json: {message: "Blog Deleted"}, status: :ok 
-                respond_to do |blog|
-                    blog.html
-                    blog.json { render json: @blogs }
-                end
+                render json: {message: "Blog Deleted"}, status: :ok 
             end
 
             def update
                 @blog = Blog.find(params[:id])
 
-                if blog.update(title: params[:title], content: params[:content], sub_title: params[:subtitle], image_path: params[:image_path])
-                    render json: blog, status: ok 
+                # if blog.update(title: params[:title], content: params[:content], sub_title: params[:subtitle], image_path: params[:image_path])
+                #     render json: blog, status: ok 
+                # else
+                #     render json: blog.error, status: :unprocessable_entity 
+                # end
+                if @blog.update(blog_params)
+                    render json: {status: 'SUCCESS', message: 'Blog Updated', data: @blog}, status: :ok
                 else
-                    render json: blog.error, status: :unprocessable_entity 
+                    render json: {status: 'ERROR', message: 'Blog Not Updated', data: @blog}, status: :unprocessable_entity
                 end
+            end
+
+            def blog_params
+                params.require(:blog).permit(:title, :sub_title, :content, :image_path, category_ids:[])
             end
         end
     end
