@@ -7,6 +7,7 @@ module BaseApi
       user = User.new(
         first_name: params[:first_name],
         last_name: params[:last_name],
+        username: params[:username],
         email: params[:email],
         phone: params[:phone],
         password: params[:password],

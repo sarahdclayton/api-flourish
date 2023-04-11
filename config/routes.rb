@@ -20,13 +20,19 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      namespace :blogs do |blog|
+        get :home
+      end
       resources :blogs, only:[:index, :show, :create, :update, :destroy]
+
       namespace :users do
         post :login
         delete :logout
         get :me
         post :create
       end
+
+      get 'users/:username', to: "users#show", constraints: {username: /.*/}
     end
   end
 end
