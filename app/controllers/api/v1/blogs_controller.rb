@@ -5,7 +5,12 @@ module Api
             def index 
                 # refering to a response
                 blogs = Blog.all 
-                render json: blogs, status: :ok 
+                # render json: blogs, status: :ok 
+                payload = {
+                    blogs: BlogBlueprint.render_as_hash(blogs),
+                    status: 200
+                }
+                render_success(payload: payload)
             end
 
             def show 

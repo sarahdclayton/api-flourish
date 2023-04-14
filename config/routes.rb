@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       end
       resources :blogs, only:[:index, :show, :create, :update, :destroy]
 
+      resources :categories
+
       namespace :users do
         post :login
         delete :logout
