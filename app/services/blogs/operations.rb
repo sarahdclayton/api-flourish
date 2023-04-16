@@ -10,7 +10,12 @@ module Blogs
 
         def self.update_blog(params)
             blog = Blog.find(params[:id])
-            return ServiceContract.success(blog) if blog.update(title: params[:title], content: params[:content], image_path: params[:image_path], sub_title: params[:sub_title])
+            return ServiceContract.success(blog) if blog.update(
+                title: params[:title], 
+                content: params[:content], 
+                image_path: params[:image_path], 
+                sub_title: params[:sub_title], 
+                category_ids: params[:category_ids])
 
             ServiceContract.error(blog.errors.full_messages)
         end

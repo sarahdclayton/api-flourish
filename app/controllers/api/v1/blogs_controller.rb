@@ -1,7 +1,7 @@
 module Api        
     module V1
         class BlogsController < Api::V1::ApplicationController
-            skip_before_action :authenticate, only: %i[home show]
+            skip_before_action :authenticate, only: %i[home show update]
             def index 
                 # refering to a response
                 blogs = Blog.all 
@@ -26,7 +26,8 @@ module Api
                 # STEP 3: if results was successful
                 # define a payload
                 payload = {
-                    blog: result.payload,
+                    blog: BlogBlueprint.render_as_hash(result.payload),
+                    # blog: result.payload,
                     status: 201
                 }
                 # STEP 4: return successful response 
@@ -47,15 +48,17 @@ module Api
                 blog = Blog.find(params[:id])
 
                 if blog.update(title: params[:title], content: params[:content], sub_title: params[:sub_title], image_path: params[:image_path])
-                    render json: blog, status: :ok 
+                    # render json: blog, status: :ok 
+                    payload = {
+                        blog: BlogBlueprint.render_as_hash(blog),
+                        # blog: result.payload,
+                        status: 201
+                    }
+                    # STEP 4: return successful response 
+                    render_success(payload: payload)
                 else
-                    render json: blog.errors, status: :unprocessable_entity 
+                    render_error(errors: blog.errors.full_messages, status: 400)
                 end
-                # if blog.update(blog_params)
-                #     render json: {status: 'SUCCESS', message: 'Blog Updated', data: @blog}, status: :ok
-                # else
-                #     render json: {status: 'ERROR', message: 'Blog Not Updated', data: @blog}, status: :unprocessable_entity
-                # end
             end
              
             def blog_params
